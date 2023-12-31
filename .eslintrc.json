@@ -1,0 +1,79 @@
+{
+  "root": true,
+  "env": { "browser": true, "es2020": true },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "ignorePatterns": ["dist", ".eslintrc.cjs"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["react-refresh", "react", "import", "prettier"],
+  "rules": {
+    "react-refresh/only-export-components": [
+      "warn",
+      { "allowConstantExport": true }
+    ],
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": 0,
+
+    // Typescript
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ],
+
+     // Import sort
+     "sort-imports": [
+      "error",
+      { "ignoreDeclarationSort": true }
+    ],
+     "import/extensions": 0,
+     "import/no-named-as-default": 0,
+     "import/prefer-default-export": 0,
+     "import/no-cycle": 0,
+     "import/no-extraneous-dependencies": 1,
+     "import/order": [
+       "error",
+       {
+         "alphabetize": { "order": "asc", "caseInsensitive": true },
+         "pathGroupsExcludedImportTypes": ["builtin"],
+         "groups": ["external", "builtin", "internal", "sibling", "parent", "index", "unknown"],
+         "pathGroups": [
+           {
+            "pattern": "public/**",
+            "group": "internal"
+          },
+           {
+             "pattern": "@/**",
+             "group": "internal",
+             "position": "after"
+           }
+         ]
+       }
+     ],
+     "react/jsx-sort-props": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "reservedFirst": ["key", "ref"]
+      }
+    ],
+
+    // Prettier
+    "prettier/prettier": [
+      "error",
+      { "endOfLine":"auto" }
+    ]
+  }
+}
